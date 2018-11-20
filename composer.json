@@ -13,7 +13,7 @@
             "Wenslim\\editormd\\": "./src/"
         },
         "files": [
-            "src/helper.php"
+            "bootstrap/helper.php"
         ]
     },
     "extra": {
