@@ -1,0 +1,24 @@
+{
+    "name": "wenslim/editormd",
+    "description": "Editor.md for laravel.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Wenslim",
+            "email": "396902854@qq.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Wenslim\\editormd\\": "./src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers" [
+                "Wenslim\\editormd\\ServiceProvider"
+            ]
+        }
+    },
+    "require": {}
+}
