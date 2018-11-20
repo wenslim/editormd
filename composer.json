@@ -11,12 +11,15 @@
     "autoload": {
         "psr-4": {
             "Wenslim\\editormd\\": "./src/"
-        }
+        },
+        "files": [
+            "src/helper.php"
+        ]
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Wenslim\\editormd\\ServiceProvider"
+                "Wenslim\\editormd\\EditorServiceProvider"
             ]
         }
     },
