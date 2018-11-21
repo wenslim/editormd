@@ -7,6 +7,7 @@ Editor.md 编辑器基于 Markdown
 ## 演示
 ![image](https://github.com/wenslim/editormd/raw/master/images/editormd.png)
 ## 使用
+为方便今后开发使用，简化成包，欢迎 star
 ### 版本
 Laravel version 5.5+
 ### 安装
@@ -67,4 +68,4 @@ return [
 </body>
 ``` 
 > 说明：在 {!! editormd_script() !!} 之前需要引入 jquery, 如果使用 Laravel Mix 默认会加载 jquery
-若不适用, 可以通过上述 cdn 方式
+> 若不使用, 可以通过上述 cdn 方式
