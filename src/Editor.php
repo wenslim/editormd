@@ -19,13 +19,13 @@ class Editor
         if ($request -> hasFile('editormd-image-file')) {
             // 验证
             $validator = Validator::make($request -> all(), [
-                'editormd-image-file' => 'max:100'
+                'editormd-image-file' => 'max:' . config('editormd.imageSize')
             ]);
 
             if ($validator -> fails()) {
                 return [
                     'success' => 0,
-                    'message' => '图片不能大于 100k',
+                    'message' => '图片不能大于 ' . config('editormd.imageSize') . 'kb',
                     'url' => ''
                 ];
             }

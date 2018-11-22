@@ -27,5 +27,7 @@ return [
     // 开启图片上传
     'imageUpload' => true,
     // 自定义存储目录
-    'imageSavePath' => 'uploads/images/' . date('Ymd', time())
+    'imageSavePath' => 'uploads/images/' . date('Ymd', time()),
+    // 允许的图片大小 kb
+    'imageSize' => '100'
 ];
