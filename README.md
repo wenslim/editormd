@@ -17,7 +17,12 @@ $ composer require wenslim/editormd
 ### 生成配置
 ```php
 $ php artisan vendor:publish
+...
+[x] Provider: Wenslim\editormd\EditorServiceProvider
+
+> x
 ```
+> 说明：选择包的序号
 
 <code>config / editormd.php</code>
 ```php
@@ -50,7 +55,9 @@ return [
     // 开启图片上传
     'imageUpload' => true,
     // 自定义存储目录
-    'imageSavePath' => 'uploads/images/' . date('Ymd', time())
+    'imageSavePath' => 'uploads/images/' . date('Ymd', time()),
+    // 允许的图片大小 kb
+    'imageSize' => '100'
 ];
 ```
 ### 模版使用
