@@ -15,7 +15,7 @@ return [
     // 显式区域主题 白 - default | 黑 - dark
     'previewTheme'=> 'default',
     // 编辑器初始化内容
-    'markdown' => 'md',
+    'markdown' => 'Enjoy this editor',
     // 代码折叠
     'codeFold' => true,
     // 实时同步
@@ -24,6 +24,8 @@ return [
     'saveHTMLToTextarea' => true,
     // 搜索替换
     'searchReplace' => true,
+    // 开启 emoji 支持
+    'emoji' => true,
     // 开启图片上传
     'imageUpload' => true,
     // 自定义存储目录

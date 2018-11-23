@@ -5,7 +5,7 @@ Editor.md 编辑器基于 Markdown
 整体界面干净整洁, 功能全面很适合做后台发文等编辑器
 > 官网地址: http://localhost/sdk/editor.md/examples/
 ## 演示
-![image](https://github.com/wenslim/editormd/raw/master/images/editormd.png)
+![image](https://images.iiiku.com/iiiku/articles/content/20181122TdEpVWEOsi.png)
 ## 使用
 为方便今后开发使用，简化成包，欢迎 star
 ### 版本
@@ -52,6 +52,8 @@ return [
     'saveHTMLToTextarea' => true,
     // 搜索替换
     'searchReplace' => true,
+    // 开启 emoji 支持
+    'emoji' => true,
     // 开启图片上传
     'imageUpload' => true,
     // 自定义存储目录

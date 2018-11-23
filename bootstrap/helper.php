@@ -32,6 +32,7 @@ if (!function_exists("editormd_script")) {
         $syncScrolling = config('editormd.syncScrolling') == '1' ? 'true' : 'false';
         $saveHTMLToTextarea = config('editormd.saveHTMLToTextarea') == '1' ? 'true' : 'false';
         $searchReplace = config('editormd.searchReplace') == '1' ? 'true' : 'false';
+        $emoji = config('editormd.emoji') == '1' ? 'true' : 'false';
         $imageUpload = config('editormd.imageUpload') == '1' ? 'true' : 'false';
         $imageUploadURL = config('editormd.imageUploadURL');
 
@@ -66,6 +67,7 @@ if (!function_exists("editormd_script")) {
             syncScrolling: {$syncScrolling},
             saveHTMLToTextarea: {$saveHTMLToTextarea},
             searchReplace: {$searchReplace},
+            emoji: {$emoji},
             imageUpload: {$imageUpload},
             imageFormats: ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
             imageUploadURL: '/wenslim/editormd/uploadImage',
