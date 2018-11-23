@@ -62,8 +62,8 @@ return [
     'imageSize' => '100'
 ];
 ```
-### 模版使用
-<code>resources / views / xxx.blade.php</code>
+### 发布时
+<code>resources / views / articles / create.blade.php</code>
 ```php
 <head>
 {!! editormd_style() !!}
@@ -76,5 +76,31 @@ return [
     {!! editormd_script() !!}
 </body>
 ``` 
-> 说明：在 {!! editormd_script() !!} 之前需要引入 jquery, 如果使用 Laravel Mix 默认会加载 jquery
-> 若不使用, 可以通过上述 cdn 方式
+> 说明：
+1. 请在资源脚本之前引入 Jquery
+2. 请为 textarea 的父级元素指明 id 选择器
+
+> 注意：若使用了 laravel mix 项目默认会生成 app.js，其中包含了 jQuery，此时只需要在脚本引入之前加载 app.js 即可，若未使用，可以采取上述引入 cdn 的方式
+
+### 存储时
+<code>app / Http / Controllers / ArticlesController.php</code>
+```php
+use App\Models\Article;
+
+public function store(ArticleRequest $request, Article $article)
+{
+    $article -> fill($request -> all());
+    ...
+    $article -> markdown = $request -> input('editormd_id-html-code');
+    $article -> save();
+}
+```
+> 说明：
+1. 默认存储 content 的原始内容
+2. 新增 markdown 字段存储编译后的内容
+
+### 显式时
+<code>resources / views / articles / show.blade.php</code>
+```php
+{!! $article -> markdown !!}
+```
