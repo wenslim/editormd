@@ -62,6 +62,8 @@ return [
     'imageSavePath' => 'uploads/images/' . date('Ymd', time()),
     // 允许的图片大小 kb
     'imageSize' => '100',
+    // default 存储在本地项目 upyun 存储到又拍云
+    'saveType' => 'default',
     /**
      * upyun 设置
      * 
