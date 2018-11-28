@@ -7,7 +7,9 @@ Editor.md 编辑器基于 Markdown
 ## 演示
 ![image](https://images.iiiku.com/iiiku/articles/content/20181122TdEpVWEOsi.png)
 ## 使用
-为方便今后开发使用，简化成包，欢迎 star
+为方便今后开发使用，简化成包，欢迎 star.  
+上传图片新增对 upyun「又拍云」 的支持.
+
 ### 版本
 Laravel version 5.5+
 ### 安装
@@ -59,7 +61,20 @@ return [
     // 自定义存储目录
     'imageSavePath' => 'uploads/images/' . date('Ymd', time()),
     // 允许的图片大小 kb
-    'imageSize' => '100'
+    'imageSize' => '100',
+    /**
+     * upyun 设置
+     * 
+     * 如最终图片位置为 https://images.iiiku.com/test/test_xxxxxxx.png
+     * 
+     * 注意：请参考下面案例写法，path 不要有多余的 '/'
+     */
+    // upyun 保存图片的前缀，按照自己喜欢定义
+    'savePrefix' => 'test_',
+    // upyun 存储地址，如绑定 CNAME 后的二级域名，没有申请 SSL 请用 http://
+    'savePath' => 'https://images.iiiku.com',
+    // upyun 写入地址，相对 savePath的地址
+    'writePath' => '/test/',
 ];
 ```
 ### 发布时
@@ -91,7 +106,7 @@ public function store(ArticleRequest $request, Article $article)
 {
     $article -> fill($request -> all());
     ...
-    $article -> markdown = $request -> input('editormd_id-html-code');
+    $article -> markdown = $request -> input('editor-html-code');
     $article -> save();
 }
 ```
@@ -99,8 +114,9 @@ public function store(ArticleRequest $request, Article $article)
 1. 默认存储 content 的原始内容
 2. 新增 markdown 字段存储编译后的内容
 
-### 显式时
+### 显示时
 <code>resources / views / articles / show.blade.php</code>
 ```php
 {!! $article -> markdown !!}
 ```
+> 说明：用于修改时，请读取 content 的内容

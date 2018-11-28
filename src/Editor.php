@@ -4,9 +4,23 @@ namespace Wenslim\editormd;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Validator;
+use Upyun\Upyun;
+use Upyun\Config;
 
 class Editor
 {
+    // 配置
+    private $name;
+    private $user;
+    private $password;
+
+    public function __construct(string $name, string $user, string $password)
+    {
+        $this -> name = $name;
+        $this -> user = $user;
+        $this -> password = $password;
+    }
+
     public function uploadImage(Request $request)
     {
         // editormd 返回值
@@ -34,19 +48,37 @@ class Editor
             $file = $request -> file('editormd-image-file');
             // 后缀
             $ext = $file -> getClientOriginalExtension();
-            // 保存地址
-            $savePath = config('editormd.imageSavePath');
-            // 创建目录
-            if (!is_dir($savePath)) {
-                Storage::makeDirectory($savePath);
+
+            $saveType = config('editormd.saveType');
+            if ($saveType == 'default') {
+                // 保存地址 - 本地
+                $savePath = config('editormd.imageSavePath');
+                // 创建目录
+                if (!is_dir($savePath)) {
+                    Storage::makeDirectory($savePath);
+                }
+                $finalPath = $savePath . '/' . uniqid() . '.' . $ext;
+                // 移动文件
+                $file -> move($savePath, $finalPath);
+                $url = $finalPath;
+            } else if ($saveType == 'upyun') {
+                // 初始化配置
+                $config = new Config($this -> name, $this -> user, $this -> password);
+                $client = new Upyun($config);
+                // 保存 upyun
+                $savePrefix = config('editormd.savePrefix');
+                $savePath = config("editormd.savePath");
+                $writePath = config("editormd.writePath");
+                $filename = $savePrefix . uniqid();
+                $url = $savePath . $writePath. $filename . '.' . $ext;
+                $client -> write($writePath . $filename . '.' . $ext, file_get_contents($file), ['x-gmkerl-thumb' => '/format/png']);
             }
-            $finalPath = $savePath . '/' . uniqid() . '.' . $ext;
-            // 移动文件
-            $file -> move($savePath, $finalPath);
+
+            // 返回提示
             return [
                 'success' => 1,
                 'message' => '上传成功',
-                'url' => $finalPath
+                'url' => $url
             ];
         }
     }

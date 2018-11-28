@@ -21,4 +21,15 @@ class EditorServiceProvider extends ServiceProvider
         // 发布路由
         $this -> loadRoutesFrom(__DIR__ . '/../bootstrap/route.php');
     }
+
+    public function register()
+    {
+        $this -> app -> singleton(Editor::class, function(){
+            return new Editor(
+                config('services.editormd.upyun.name'), 
+                config('services.editormd.upyun.user'),
+                config('services.editormd.upyun.password')
+            );
+        });
+    }
 }

@@ -31,5 +31,20 @@ return [
     // 自定义存储目录
     'imageSavePath' => 'uploads/images/' . date('Ymd', time()),
     // 允许的图片大小 kb
-    'imageSize' => '100'
+    'imageSize' => '100',
+    // Editormd.php 存储类型 default / upyun
+    'saveType' => 'default',
+    /**
+     * upyun 设置
+     * 
+     * 如最终图片位置为 https://images.iiiku.com/test/test_xxxxxxx.png
+     * 
+     * 注意：请参考下面案例写法，path 不要有多余的 '/'
+     */
+    // upyun 保存图片的前缀，按照自己喜欢定义
+    'savePrefix' => 'test_',
+    // upyun 存储地址，如绑定 CNAME 后的二级域名，没有申请 SSL 请用 http://
+    'savePath' => 'https://images.iiiku.com',
+    // upyun 写入地址，相对 savePath的地址
+    'writePath' => '/test/',
 ];
