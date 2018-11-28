@@ -62,6 +62,8 @@ return [
     'imageSavePath' => 'uploads/images/' . date('Ymd', time()),
     // 允许的图片大小 kb
     'imageSize' => '100',
+    // default 存储在本地项目 upyun 存储到又拍云
+    'saveType' => 'default',
     /**
      * upyun 设置
      * 
@@ -77,6 +79,32 @@ return [
     'writePath' => '/test/',
 ];
 ```
+### 使用 upyun 时
+#### 修改配置
+<code>config / services.php</code>
+```php
+return [
+    ...
+    'editormd' => [
+        'upyun' => [
+            'name' => env('UPYUN_NAME'),
+            'user' => env('UPYUN_USER'),
+            'password' => env('UPYUN_PASS'),
+        ]
+    ]
+];
+```
+#### 配置账号
+<code>.env</code>
+```php
+// 服务名称
+UPYUN_NAME=xxx
+// 操作员名
+UPYUN_USER=xxx
+// 操作员密码
+UPYUN_PASS=xxx
+```
+
 ### 发布时
 <code>resources / views / articles / create.blade.php</code>
 ```php
