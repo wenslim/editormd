@@ -11,21 +11,28 @@ Editor.md 编辑器基于 Markdown
 上传图片新增对 upyun「又拍云」 的支持.
 
 ### 版本
-Laravel version 5.5+
+要求 Laravel version 5.5+
 ### 安装
 ```php
 $ composer require wenslim/editormd
 ```
 ### 生成配置
 ```php
-$ php artisan vendor:publish
-...
-[x] Provider: Wenslim\editormd\EditorServiceProvider
-
-> x
+$ php artisan vendor:publish --provider="Wenslim\editormd\EditorServiceProvider"
 ```
-> 说明：选择包的序号
 
+### 关于包更新
+1. 请查看 github 文档当前包最新版本号, 目前是 0.1.1
+<code>composer.json</code>
+```php
+"require": {
+    ...
+    "wenslim/editormd": "~0.1"
+},
+```
+2. 删除 <code>config / editormd.php</code>配置文件并通过上面指令重新生成配置
+
+### 配置文件
 <code>config / editormd.php</code>
 ```php
 <?php
@@ -94,14 +101,16 @@ return [
     ]
 ];
 ```
+> 说明：
+- name - 服务名称
+- user - 操作员名称
+- pass - 操作员密码
 #### 配置账号
 <code>.env</code>
 ```php
-// 服务名称
+...
 UPYUN_NAME=xxx
-// 操作员名
 UPYUN_USER=xxx
-// 操作员密码
 UPYUN_PASS=xxx
 ```
 

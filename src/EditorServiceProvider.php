@@ -11,7 +11,7 @@ class EditorServiceProvider extends ServiceProvider
         // 发布资源文件 - 标签 editormd
         $this -> publishes([
             __DIR__ . '/../public/' => public_path('/'),
-        ], 'editormd');
+        ]);
 
         // 发布配置文件
         $this -> publishes([

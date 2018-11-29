@@ -14,7 +14,7 @@ class Editor
     private $user;
     private $password;
 
-    public function __construct(string $name, string $user, string $password)
+    public function __construct($name = '', $user = '', $password = '')
     {
         $this -> name = $name;
         $this -> user = $user;
