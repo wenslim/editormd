@@ -30,6 +30,10 @@ $ php artisan vendor:publish --provider="Wenslim\editormd\EditorServiceProvider"
     "wenslim/editormd": "~0.1"
 },
 ```
+更新
+```php
+$ composer update wenslim/editormd
+```
 2. 删除 <code>config / editormd.php</code>配置文件并通过上面指令重新生成配置
 
 ### 配置文件
