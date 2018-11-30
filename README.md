@@ -90,6 +90,14 @@ return [
     'writePath' => '/test/',
 ];
 ```
+### 使用 default 时
+<code>.env</code>
+```php
+...
+APP_URL=xxx
+```
+> 说明：如果是本地，请填写你的域名
+
 ### 使用 upyun 时
 #### 修改配置
 <code>config / services.php</code>

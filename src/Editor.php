@@ -60,7 +60,7 @@ class Editor
                 $finalPath = $savePath . '/' . uniqid() . '.' . $ext;
                 // 移动文件
                 $file -> move($savePath, $finalPath);
-                $url = $finalPath;
+                $url = env('APP_URL') . '/' . $finalPath;
             } else if ($saveType == 'upyun') {
                 // 初始化配置
                 $config = new Config($this -> name, $this -> user, $this -> password);
