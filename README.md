@@ -3,7 +3,7 @@
 ## 简介
 Editor.md 编辑器基于 Markdown
 整体界面干净整洁, 功能全面很适合做后台发文等编辑器
-> 官网地址: http://localhost/sdk/editor.md/examples/
+
 ## 演示
 ![image](https://images.iiiku.com/iiiku/articles/content/20181122TdEpVWEOsi.png)
 ## 使用
@@ -22,7 +22,7 @@ $ php artisan vendor:publish --provider="Wenslim\editormd\EditorServiceProvider"
 ```
 
 ### 关于包更新
-1. 请查看 github 文档当前包最新版本号, 目前是 0.1.1
+1. 请查看 github 文档当前包最新版本号, 目前是 0.1.2
 <code>composer.json</code>
 ```php
 "require": {
